@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './exercises2.11.-2.14./App';
+import App from './exercises_2.11/App';
 
 import reportWebVitals from './reportWebVitals';
 
