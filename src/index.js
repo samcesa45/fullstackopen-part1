@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './exercise_2.1/App';
+import App from './exercise_2.6/App';
 import reportWebVitals from './reportWebVitals';
 
 // const notes = [
