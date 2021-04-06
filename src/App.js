@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
 import Note from './component/Note';
 
 const App = (props) => {
-	const [notes, setNotes] = useState(props.notes);
+	const [notes, setNotes] = useState([]);
 	const [newNote, setNewNote] = useState('a new note...');
 	const [showAll, setShowAll] = useState(true);
 	const addNote = (event) => {
@@ -25,6 +26,13 @@ const App = (props) => {
 
 	const notesToShow = showAll ? notes : notes.filter((note) => note.important);
 
+	useEffect(() => {
+		axios.get('http://localhost:3001/notes').then((res) => {
+			console.log('promise fulfilled');
+			setNotes(res.data);
+		});
+	}, []);
+	console.log('render', notes.length, 'notes');
 	return (
 		<div>
 			<h1>Notes</h1>
