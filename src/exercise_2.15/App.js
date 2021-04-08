@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import personService from './services/persons';
-import Filter from './Filter';
-import PersonForm from './PersonForm';
-import Persons from './Persons';
+import Filter from './components/Filter';
+import PersonForm from './components/PersonForm';
+import Persons from './components/Persons';
+import Notification from './components/Notification';
 const App = () => {
 	const [persons, setPersons] = useState([]);
 	const [newName, setName] = useState('');
 	const [newNumber, setNumber] = useState('');
 	const [filter, setFilter] = useState('');
+	const [errorMessage, setErrorMessage] = useState({
+		message: '',
+		category: '',
+	});
 
 	const handleNameChange = (event) => setName(event.target.value);
 	const handleNumberChange = (event) => setNumber(event.target.value);
@@ -15,8 +20,8 @@ const App = () => {
 
 	const addPerson = (event) => {
 		event.preventDefault();
-
-		if (persons.find((person) => person.name === newName)) {
+		let person = persons.find((person) => person.name === newName);
+		if (person) {
 			if (
 				window.confirm(
 					`${newName} is already added to phonebook, replace the old number with the new one`
@@ -35,10 +40,27 @@ const App = () => {
 								person.id !== id ? person : returnedObject
 							)
 						);
+						const messageObject = {
+							message: `Added ${returnedObject.name}`,
+							category: 'success',
+						};
+						setErrorMessage(messageObject);
+						setTimeout(() => {
+							setErrorMessage({ ...errorMessage, message: null });
+						}, 2000);
 						setName('');
 						setNumber('');
 					})
-					.catch((err) => console.log(err));
+					.catch((error) => {
+						const messageObject = {
+							message: `Information of ${personObject.name} has already been removed from server`,
+							category: 'error',
+						};
+						setErrorMessage(messageObject);
+						setTimeout(() => {
+							setErrorMessage({ ...errorMessage, message: null });
+						}, 2000);
+					});
 			}
 		} else {
 			const personObject = {
@@ -50,6 +72,14 @@ const App = () => {
 				.create(personObject)
 				.then((returnedObject) => {
 					setPersons(persons.concat(returnedObject));
+					const messageObject = {
+						message: `Added ${newName}`,
+						category: 'success',
+					};
+					setErrorMessage(messageObject);
+					setTimeout(() => {
+						setErrorMessage({ ...errorMessage, message: null });
+					}, 2000);
 					setName('');
 					setNumber('');
 				})
@@ -78,6 +108,7 @@ const App = () => {
 	return (
 		<div>
 			<h1>Phonebook</h1>
+			<Notification messageType={errorMessage} />
 			<Filter
 				onfilterChange={handleFilterChange}
 				filter={filter}
