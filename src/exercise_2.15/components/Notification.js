@@ -28,6 +28,7 @@ const Notification = ({ messageType }) => {
 	if (messageType.category === 'error') {
 		return <div style={errorStyle}>{messageType.message}</div>;
 	}
+
 	return <div></div>;
 };
 

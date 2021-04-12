@@ -53,7 +53,8 @@ const App = () => {
 					})
 					.catch((error) => {
 						const messageObject = {
-							message: `Information of ${personObject.name} has already been removed from server`,
+							message: `Information of ${personObject.name} has already taken`,
+
 							category: 'error',
 						};
 						setErrorMessage(messageObject);
@@ -83,7 +84,19 @@ const App = () => {
 					setName('');
 					setNumber('');
 				})
-				.catch((err) => console.log(err));
+				.catch((error) => {
+					//this is the way to access the error message
+					if (error.response) {
+						console.log(error.response.data);
+						console.log(error.response.status);
+						console.log(error.response.headers);
+					}
+					setErrorMessage({
+						...errorMessage,
+						message: error.response.data,
+						category: 'error',
+					});
+				});
 		}
 	};
 
@@ -104,6 +117,9 @@ const App = () => {
 
 	useEffect(() => {
 		fetchedPersons();
+		return () => {
+			setPersons({});
+		};
 	}, []);
 	return (
 		<div>
