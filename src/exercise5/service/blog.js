@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = '/api/notes';
+const baseUrl = '/api/blogs';
 
 let token = null;
 
@@ -8,8 +8,8 @@ const setToken = (newToken) => {
 };
 
 const getAll = async () => {
-	const response = await axios.get(baseUrl);
-	return response.data;
+	const request = await axios.get(baseUrl);
+	return request.data;
 };
 
 const create = async (newObject) => {
@@ -26,9 +26,18 @@ const update = async (id, newObject) => {
 	return response.data;
 };
 
-export const noteService = {
+const remove = async (id) => {
+	const authoriz = {
+		headers: { Authorization: token },
+	};
+	const response = await axios.delete(`${baseUrl}/${id}`, authoriz);
+	return response.data;
+};
+
+export const blogService = {
+	setToken,
 	getAll,
 	create,
 	update,
-	setToken,
+	remove,
 };

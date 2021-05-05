@@ -1,5 +1,12 @@
-body {
+*,
+*::after,
+*::before {
 	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
 		sans-serif;
@@ -12,23 +19,58 @@ code {
 		monospace;
 }
 
-/* h1 {
-	color: green;
-	font-style: italic;
+header {
+	position: static;
+	background: #ccc;
+	padding: 25px;
+	width: 100%;
 }
 
-.note {
-	color: rebeccapurple;
-	padding-top: 3px;
-	font-size: 15px;
+nav ul {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+ul {
+	text-decoration: none;
+}
+
+li,
+a {
+	list-style-type: none;
+	margin: 0 2rem;
+	text-transform: capitalize;
+	color: indigo;
+	text-decoration: none;
+	padding: 0 20px;
+}
+
+li:hover {
+	color: hotpink;
+}
+
+main {
+	margin-top: 5rem;
+	background: cadetblue;
+	display: flex;
+	min-height: 100vh;
+	padding: 10px;
+	margin: 0 auto;
+}
+
+.success {
+	border: 2px solid green;
+	padding: 10px 0;
+	background: #ccc;
+	border-radius: 5px;
+	margin-bottom: 5px;
 }
 
 .error {
-	color: red;
-	background: lightgrey;
-	font-size: 20px;
-	border-style: solid;
+	border: 2px solid red;
+	padding: 10px 0;
+	background: #ccc;
 	border-radius: 5px;
-	padding: 10px;
-	margin-bottom: 10px;
-} */
+	margin-bottom: 5px;
+}
