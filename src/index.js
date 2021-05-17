@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
-import App from './exercise7.7-7.8/App';
+import App from './exercise 7.8/App';
 // import { BrowserRouter as Router } from 'react-router-dom';
 // import reportWebVitals from './reportWebVitals';
 

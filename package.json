@@ -17,6 +17,7 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
+		"server": "json-server -p3001 --watch db.json",
 		"eject": "react-scripts eject",
 		"eslint": "eslint",
 		"cypress:open": "cypress open",
@@ -48,5 +49,5 @@
 		"eslint-plugin-jest": "^24.3.6",
 		"json-server": "^0.16.3"
 	},
-	"proxy": "http://localhost:5000"
+	"proxy": "http://localhost:3001"
 }

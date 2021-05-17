@@ -1,24 +1,28 @@
 {
+  "notes": [
+    {
+      "content": "custom-hooks are awesome!",
+      "id": "1"
+    },
+    {
+      "content": "best feature ever <3",
+      "id": "2"
+    },
+    {
+      "content": "i love to create",
+      "id": "0O4dlU1"
+    }
+  ],
   "persons": [
     {
       "name": "Arto Hellas",
       "number": "014-256-789",
-      "id": 1
+      "id": "1"
     },
     {
-      "name": "Anna Lovelace",
-      "number": "987-478-568",
-      "id": 2
-    },
-    {
-      "name": "Dan Eshiet",
-      "number": "456-789-123",
-      "id": 3
-    },
-    {
-      "name": "Shawn Carter",
-      "number": "456-888-125",
-      "id": 4
+      "name": "Sam cesa",
+      "number": "0817548692",
+      "id": "Uq-Mjh5"
     }
   ]
 }
