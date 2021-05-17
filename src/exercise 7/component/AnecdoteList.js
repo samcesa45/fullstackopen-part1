@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Notification from './Notification';
-// import { useParams } from 'react-router-dom';
+
 const AnectdoteList = ({ anecdotes, notification }) => {
 	return (
 		<div>

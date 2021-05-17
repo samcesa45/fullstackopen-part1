@@ -29,7 +29,8 @@ const App = () => {
 
 	const addNew = (anecdote) => {
 		anecdote.id = (Math.random() * 1000).toFixed(0);
-		setAnecdotes(anecdotes.concat(anecdote));
+		setAnecdotes([...anecdotes, anecdote]);
+		// setAnecdotes(anecdotes.concat(anecdote));
 		setNotification(`a new anecdote ${anecdote.content} created!`);
 		setTimeout(() => {
 			setNotification('');
@@ -59,13 +60,6 @@ const App = () => {
 
 			<Menu />
 			<Switch>
-				<Route path="/" exact>
-					<AnecdoteList
-						anecdotes={anecdotes}
-						vote={vote}
-						notification={notification}
-					/>
-				</Route>
 				<Route path="/anecdotes/:id">
 					<Anecdote anecdote={anecdote} />
 				</Route>
@@ -74,6 +68,13 @@ const App = () => {
 				</Route>
 				<Route path="/createnew">
 					<CreateNew addNew={addNew} />
+				</Route>
+				<Route path="/">
+					<AnecdoteList
+						anecdotes={anecdotes}
+						vote={vote}
+						notification={notification}
+					/>
 				</Route>
 			</Switch>
 			<Footer />
